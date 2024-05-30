@@ -17,7 +17,7 @@ This is a simple Python module for running Monte Carlo simulations using `42`. T
 
 `monte_carlo.py` handles all of the input and output from `42`. 
 
-`--num_cores` threads will be spawned to run simulations. `runner(...)` is the entry point for each thread and spawns subprocesses to run `42`. In one test, 100 runs with 2 cores took 73s, while 100 runs with 4 cores took 36, and with 8 cores 100 runs took 21s.
+`--num_cores` threads will be spawned to run simulations. `runner(...)` is the entry point for each thread and spawns subprocesses to run `42`. In one test, 100 runs with 2, 4, and 8 cores took 73s, 36s, and 21s respectively.
 
 `def preprocess(...)` is used to configure the inputs for the given run of the simulation. Any randomization or customization should be done here.
 
