@@ -1,7 +1,9 @@
 
 # py42
 
-This is a simple Python module for running Monte Carlo simulations using `42`. This is intended to be used in a devcontainer. `42` will be cloned at `/42` within the container.
+This is a simple Python module for running simulations using `42`. This is intended to be used in a devcontainer. `42` will be cloned at `/42` within the container. 
+
+This is a work-in-progress and is very much subject to change. For now, the only functional component in the Monte Carlo simulation script. Future additions will be based on need.
 
 
 
@@ -66,6 +68,8 @@ fprintf(PosNfile,"%le %le %le\n", SC[0].PosN[0],SC[0].PosN[1],SC[0].PosN[2]);
 fprintf(AccFile,"%le %le ",SC[0].Accel[i].TrueAcc,SC[0].Accel[i].MeasAcc);
 ```
 
+## Coordinate frames
+
 - N - Inertial frame (ECI)
 - W - Rotating frame (ECEF)
 - B - Body frame
@@ -82,7 +86,8 @@ Here are descriptions of **some** of the output files.
 - `VelX.42` - Velocity in X frame
 - `qbn.42`  - Quaternion of B in N frame
 - `wbn.42`  - Angular Velocity of B wrt N expressed in B frame (rad/sec)
-- `svn.42`  - Sun-pointing unit vector, expressed in N (`svb.42` also available)
+- `svn.42`  - Sun-pointing unit vector, expressed in N 
+- `svb.42`  - Sun-pointing unit vector, expressed in B 
 - `RPY.42`  - Roll, Pitch, Yaw (I believe it's B to R?)
 - `HWhl.42` - Wheel angular momentum, (Nms)
 - `Hvn.42`  - Total SC angular momentum (Nms) expressed in N
@@ -92,7 +97,7 @@ Here are descriptions of **some** of the output files.
 
 ## Optional data files
 
-Some output files only get written if they are enabled. For example, you must add an accelerometer to `SC_Simple.txt` to get `Acc.42`.
+Some output files only get written if a payload is included on the spacecraft. For example, you must add an accelerometer to `SC_Simple.txt` to get `Acc.42`.
 
 - `Acc.42` - Accelerometer data
 - `MTB.42` - Magnetorquer data
