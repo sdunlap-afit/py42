@@ -3,7 +3,7 @@
 
 This is a simple Python module for running simulations using `42`. This is intended to be used in a devcontainer. `42` will be cloned at `/42` within the container. 
 
-This is a work-in-progress and is very much subject to change. For now, the only functional component in the Monte Carlo simulation script. Future additions will be based on need.
+This is a work-in-progress and is very much subject to change. For now, the only functional component is the Monte Carlo simulation script. Future additions will be based on need.
 
 
 
