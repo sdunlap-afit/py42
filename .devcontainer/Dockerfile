@@ -43,6 +43,7 @@ WORKDIR /
 RUN git clone https://github.com/ericstoneking/42.git
 
 WORKDIR /42
+RUN chmod 777 -R .
 RUN make
 
 
