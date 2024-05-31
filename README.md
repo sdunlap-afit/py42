@@ -110,3 +110,21 @@ Other files are commented out in the source (`//GyroReport();` and `//MagReport(
 cd /42
 make
 ```
+
+# Flight Control Software (FSW)
+
+`FSW Models.pdf` provides info on the flight control options in 42. Here is a brief summary.
+
+- PASSIVE_FSW - No control, forces, or torques. 
+- PROTOTYPE_FSW - Simple attitude control using `Inp_Cmd.txt`. Does not use actuators.
+- AD_HOC_FSW - Proportional-derivative linear feedback to align the spacecraft with the inertial frame (N). Uses ideal torquers for actuation and we need to modify sensor inputs, commanded attitude, control law, and actuator commanding.
+- THREE_AXIS_FSW - More realistic. Wheels and magnetic torquers in LVLH frame, with a single-axis solar array gimbal tracking the Sun. 
+- Custom - You can define your own by modifying the source. See `FSW Models.pdf` for more info.
+
+## Sensor Models
+
+`42sensors.c` contains a few basic sensor models, that basically copy the truth data into the flight software data structure and maybe add some noise or bias.
+
+## Actuator Models
+
+`42actuators.c` contains a few basic actuator models. In addition to the normal actuators, it also includes `IdealFrc` and `IdealTrq` which can be used to apply forces and torques directly to the spacecraft (these are used by `PROTOTYPE_FSW` and `AD_HOC_FSW`).
