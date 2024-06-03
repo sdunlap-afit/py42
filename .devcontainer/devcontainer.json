@@ -1,7 +1,15 @@
-{
+1{
 	"name": "llvm development container",
 	"dockerFile": "./Dockerfile",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/home/user/py42,type=bind",
 	"workspaceFolder": "/home/user/py42",
-	"remoteUser": "user"
+	"remoteUser": "user",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-vscode.makefile-tools"
+			]
+		}
+	}
 }
