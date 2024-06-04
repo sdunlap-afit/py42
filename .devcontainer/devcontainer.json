@@ -1,4 +1,4 @@
-1{
+{
 	"name": "llvm development container",
 	"dockerFile": "./Dockerfile",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/home/user/py42,type=bind",
