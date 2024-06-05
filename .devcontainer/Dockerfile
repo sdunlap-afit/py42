@@ -13,7 +13,7 @@ RUN apt install -y  git make \
 
 
 RUN pip3 install astropy numpy pymap3d 
-RUN pip3 install matplotlib jupyter ipympl
+RUN pip3 install matplotlib jupyter ipympl scipy
 
 ##### Add non-root user #####
 
