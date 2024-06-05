@@ -12,7 +12,8 @@ RUN apt install -y  git make \
                     libglfw3-dev
 
 
-RUN pip3 install astropy numpy pymap3d
+RUN pip3 install astropy numpy pymap3d 
+RUN pip3 install matplotlib jupyter ipympl
 
 ##### Add non-root user #####
 
