@@ -227,7 +227,7 @@ if __name__ == '__main__':
     parser.add_argument('-k', '--keep',      action='store_true',               help='Keep all files (default is to keep only the files in save_list)')
     parser.add_argument('-n', '--num_runs',  type=int, default=10,              help='Number of runs to perform')
     parser.add_argument('-c', '--num_cores', type=int, default=10,              help='Number of cores to use')
-    parser.add_argument('-t', '--template',  type=str, default='mc_template',   help='Path to the template dir (will be created if it does not exist)')
+    parser.add_argument('-t', '--template',  type=str, default='testsc',        help='Path to the template dir (will be created if it does not exist)')
     parser.add_argument('-o', '--outdir',    type=str, default='mc_data',       help='Path to output the data (each run will be subfolder in this dir)')
     args = parser.parse_args()
 
