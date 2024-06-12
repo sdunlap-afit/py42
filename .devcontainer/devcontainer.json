@@ -1,6 +1,9 @@
 {
 	"name": "llvm development container",
 	"dockerFile": "./Dockerfile",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
 	"workspaceMount": "source=${localWorkspaceFolder},target=/home/user/py42,type=bind",
 	"workspaceFolder": "/home/user/py42",
 	"remoteUser": "user",
