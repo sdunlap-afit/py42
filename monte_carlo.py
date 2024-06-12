@@ -72,7 +72,7 @@ def RunMC():
     num_dig = int(np.floor(np.log10(num_runs))) + 1
     
     # Queue up path for each run
-    for i in range(num_runs):
+    for i in range(args.index, args.index + num_runs):
         path = os.path.join(output_dir, f'Run_{i:0{num_dig}}')
         job_queue.put(path)
 
@@ -225,6 +225,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run a Monte Carlo campaign')
     parser.add_argument('-d', '--debug',     action='store_true',               help='Print debug info')
     parser.add_argument('-k', '--keep',      action='store_true',               help='Keep all files (default is to keep only the files in save_list)')
+    parser.add_argument('-i', '--index',     type=int, default=0,               help='Index of first run (good for distributed runs)')
     parser.add_argument('-n', '--num_runs',  type=int, default=10,              help='Number of runs to perform')
     parser.add_argument('-c', '--num_cores', type=int, default=10,              help='Number of cores to use')
     parser.add_argument('-t', '--template',  type=str, default='testsc',        help='Path to the template dir (will be created if it does not exist)')
