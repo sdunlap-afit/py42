@@ -7,19 +7,19 @@ This is a work-in-progress and is very much subject to change. For now, the only
 
 
 
-# Usage
+
+
+# Monte Carlo Simulations
+
+## Usage
+
+`monte_carlo.py` handles all of the input and output from `42`, while `42` does all of the heavy lifting.  
 
 ```bash
 ./monte_carlo.py --help
 ```
 
-
-
-# Configuration
-
-`monte_carlo.py` handles all of the input and output from `42`. 
-
-`--num_cores` threads will be spawned to run simulations. `runner(...)` is the entry point for each thread and spawns subprocesses to run `42`. In one test, 100 runs with 2, 4, and 8 cores took 73s, 36s, and 21s respectively.
+`--num_cores` threads will be spawned to run simulations. `runner(...)` is the entry point for each thread and spawns subprocesses to run `42`. 
 
 `def preprocess(...)` is used to configure the inputs for the given run of the simulation. Any randomization or customization should be done here.
 
@@ -28,6 +28,27 @@ This is a work-in-progress and is very much subject to change. For now, the only
 `save_list` is a list of files in the output directory to keep. All other files will be deleted.
 
 
+## Simulation performance
+
+For 100 runs of a simple test case (one full orbit):
+
+| Device       | # of cores | Time (s)  |
+|:-------------|:----------:|:---------:|
+| PC (Native)  |      1     |    425    |
+| PC (Native)  |      2     |    219    |
+| PC (Native)  |      4     |    105    |
+| PC (Native)  |      8     |    56     |
+| PC (Native)  |      16    |    38     |
+| PC (Devcont) |      1     |    527    |
+| PC (Devcont) |      2     |    268    |
+| PC (Devcont) |      4     |    125    |
+| PC (Devcont) |      8     |    63     |
+| PC (Devcont) |      16    |    40     |
+| PC (DinD)    |      8     |    63     |
+| Pi4 (Native) |      4     |    400    |
+| Pi4 (Docker) |      4     |    406    |
+
+\*PC has 8 hyperthreaded cores.
 
 # 42 config
 
