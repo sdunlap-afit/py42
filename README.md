@@ -44,6 +44,8 @@ For 100 runs of a simple test case (one full orbit):
 | PC (Devcont) |      4     |    125    |
 | PC (Devcont) |      8     |    65     |
 | PC (Devcont) |      16    |    40     |
+| PC (DinD)    |      2     |    221    |
+| PC (DinD)    |      4     |    112    |
 | PC (DinD)    |      8     |    57     |
 | Pi4 (Native) |      2     |    672    |
 | Pi4 (Native) |      4     |    400    |
