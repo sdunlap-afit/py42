@@ -12,6 +12,7 @@ RUN apt install -y  git make \
                     freeglut3-dev \
                     libglfw3-dev \
                     gnutls-bin \
+                    smbclient \
                     curl
 
 
