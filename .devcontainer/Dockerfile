@@ -3,17 +3,19 @@ FROM ubuntu:22.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt upgrade -y
-RUN apt install -y curl
+
 RUN apt install -y  git make \
+                    libc-bin \
                     python3-pip \
                     vim-gtk \
                     gcc g++ \
                     freeglut3-dev \
-                    libglfw3-dev
+                    libglfw3-dev \
+                    gnutls-bin \
+                    curl
 
 
-RUN pip3 install astropy numpy pymap3d 
-RUN pip3 install matplotlib jupyter ipympl scipy
+RUN pip3 install astropy numpy pymap3d matplotlib jupyter ipympl scipy
 
 ##### Add non-root user #####
 
@@ -38,15 +40,12 @@ RUN groupadd --gid $USER_GID $USERNAME \
 # * Anything else you want to do like clean up goes here *
 # ********************************************************
 
-
 WORKDIR /
 
-RUN git clone https://github.com/ericstoneking/42.git
+RUN git clone --depth=1 https://github.com/ericstoneking/42.git
 
 WORKDIR /42
-RUN chmod 777 -R .
-RUN make
-
+RUN chmod 777 -R . && make
 
 
 # [Optional] Set the default user. Omit if you want to keep the default as root.
