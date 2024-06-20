@@ -6,6 +6,16 @@ This is a simple Python module for running simulations using `42`. This is inten
 This is a work-in-progress and is very much subject to change. For now, the only functional component is the Monte Carlo simulation script. Future additions will be based on need.
 
 
+# Plotting Utilities
+
+`plotting.py` contains some basic utilities for plotting the output data from `42` using matplotlib and the VSCode Jupyter Notebook extension. 
+
+This picture shows the result of `make test` plotted with `plotting.py`.
+
+![plot](./img/ex0_plot.png)
+
+
+
 
 
 
