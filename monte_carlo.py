@@ -256,3 +256,10 @@ if __name__ == '__main__':
 
 # ./monte_carlo.py -n 100 -c 16 -z
 # Campaign Duration:  37.742 sec
+
+# Kubernetes Cluster -n 100 -c 20ish
+# py42-trrlr   100/100       4m         4m1s
+# py42-vmggx   100/100       4m24s      4m24s
+
+# Kubernetes python does 4 runs at a time with 4 cores
+# py42-jcb6d   25/25         4m51s      4m51s (only two nodes were used???)
