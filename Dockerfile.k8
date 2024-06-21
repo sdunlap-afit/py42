@@ -49,8 +49,9 @@ RUN git clone --depth=1 https://github.com/ericstoneking/42.git
 WORKDIR /42
 RUN chmod 777 -R . && make
 
-
 ADD . /home/user/py42
+
+RUN chmod 777 -R /home/user/py42
 
 # [Optional] Set the default user. Omit if you want to keep the default as root.
 USER $USERNAME

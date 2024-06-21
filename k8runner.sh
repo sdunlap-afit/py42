@@ -10,11 +10,13 @@
 #   4. Compress the results
 #   5. Push them back to the share
 
+# cd to directory containing this file
+cd "$(dirname "$0")"
 
-TEST_DIR=$1
+TEST_DIR=testsc
 INDEX=$JOB_COMPLETION_INDEX
 echo "My index is: $INDEX"
-touch run$INDEX.txt && smbclient //10.10.10.15/shared -U pi% -c "put run$INDEX.txt"
+# touch run$INDEX.txt && smbclient //10.10.10.15/shared -U pi% -c "put run$INDEX.txt"
 
 # Get a random number
 # INDEX=$(shuf -i 1-1000000 -n 1)
@@ -28,16 +30,19 @@ touch run$INDEX.txt && smbclient //10.10.10.15/shared -U pi% -c "put run$INDEX.t
 
 # cd $TEST_DIR
 
-python3 monte_carlo.py -t $TEST_DIR -n 1 -c 1 -i $INDEX
+# multiply INDEX by 4
+INDEX=$(($INDEX * 4))
 
-# cd mc_data
+python3 monte_carlo.py -t $TEST_DIR -n 4 -c 4 -i $INDEX -z
 
-# # Find the directory created with the results
-# DIRNAME = $(ls -d */)
+cd mc_data
 
-# tar -czf $DIRNAME.tar.gz $DIRNAME
+# Find the directory created with the results
+smbclient //10.10.10.15/shared -U pi% -c "put Run_$INDEX.tar.gz"
 
-# smbclient //pinas/shared -U pi% -c "put $DIRNAME.tar.gz"
+
+
+
 
 
 
