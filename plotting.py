@@ -1,17 +1,12 @@
 #!/usr/bin/env python3
 
-#%% 
-
-
-# Simple script to plot ECEF coordinates
+#%% Simple script to plot ECEF coordinates
 
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.spatial.transform import Rotation
-
-# 3.429742e+06 -5.846064e+06 6.042774e+04
 
 %matplotlib widget
 plt.rcParams["figure.figsize"] = (8, 8)
