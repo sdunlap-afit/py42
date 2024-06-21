@@ -11,11 +11,15 @@
 #   5. Push them back to the share
 
 
-# TEST_DIR=$1
-# INDEX=$2
+TEST_DIR=$1
+INDEX=$JOB_COMPLETION_INDEX
+echo "My index is: $INDEX"
+touch run$INDEX.txt && smbclient //10.10.10.15/shared -U pi% -c "put run$INDEX.txt"
 
 # Get a random number
-INDEX=$(shuf -i 1-100000 -n 1) && touch run$INDEX.txt && smbclient //pinas/shared -U pi% -c "put run$INDEX.txt"
+# INDEX=$(shuf -i 1-1000000 -n 1)
+
+# INDEX=$(shuf -i 1-100000 -n 1) && touch run$INDEX.txt && smbclient //10.10.10.15/shared -U pi% -c \"put run$INDEX.txt\"
 
 # smbclient //pinas/shared -U pi% -c "get $TEST_DIR.tar.gz"
 # smbclient //pinas/shared -U pi% -c "get monte_carlo.py"
@@ -24,7 +28,7 @@ INDEX=$(shuf -i 1-100000 -n 1) && touch run$INDEX.txt && smbclient //pinas/share
 
 # cd $TEST_DIR
 
-# python3 monte_carlo.py -t $TEST_DIR -n 1 -c 1 -i $INDEX
+python3 monte_carlo.py -t $TEST_DIR -n 1 -c 1 -i $INDEX
 
 # cd mc_data
 
