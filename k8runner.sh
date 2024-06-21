@@ -38,7 +38,7 @@ python3 monte_carlo.py -t $TEST_DIR -n 4 -c 4 -i $INDEX -z
 cd mc_data
 
 # Find the directory created with the results
-smbclient //10.10.10.15/shared -U pi% -c "put Run_$INDEX.tar.gz"
+smbclient //10.10.10.15/shared -U pi% -c "prompt;mput *"
 
 
 

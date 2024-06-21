@@ -263,3 +263,5 @@ if __name__ == '__main__':
 
 # Kubernetes python does 4 runs at a time with 4 cores
 # py42-jcb6d   25/25         4m51s      4m51s (only two nodes were used???)
+# py42-xvm6k   25/25         3m5s       3m5s (4 nodes?)
+# py42-h759f   25/25         2m51s      2m52s
