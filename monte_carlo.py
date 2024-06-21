@@ -143,16 +143,29 @@ def runner(job_queue):
                                  stdout=open(so, 'w'), stderr=open(se, 'w'))
             p.wait()
 
-
             if args.debug:
                 print(f'Postprocessing {path}')
     
             postprocess(path)
 
+            if args.compress:
+                if args.debug:
+                    print(f'Compressing {path}')
+                
+                # the path directory's parent dir
+                parent = os.path.dirname(path)
+                base = os.path.basename(path)
+
+                p = subprocess.Popen(f'tar -czf {path}.tar.gz -C {parent} {base}', shell=True,
+                                       stdout=subprocess.DEVNULL,
+                                       stderr=subprocess.STDOUT)
+                p.wait()
+                # Delete the folder
+                shutil.rmtree(path)
+
             print(f'Finished {path} in {time.time() - t : .03f} sec')
 
         except queue.Empty:
-            pass
             continue
 
         # Print any exceptions
@@ -164,6 +177,7 @@ def runner(job_queue):
 
 
 def preprocess(path):
+
     ''' Customize the input files for each run
         path: str, path to the inputs folder
     '''
@@ -225,6 +239,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run a Monte Carlo campaign')
     parser.add_argument('-d', '--debug',     action='store_true',               help='Print debug info')
     parser.add_argument('-k', '--keep',      action='store_true',               help='Keep all files (default is to keep only the files in save_list)')
+    parser.add_argument('-z', '--compress',  action='store_true',               help='Compress the resulting data file')
     parser.add_argument('-i', '--index',     type=int, default=0,               help='Index of first run (good for distributed runs)')
     parser.add_argument('-n', '--num_runs',  type=int, default=10,              help='Number of runs to perform')
     parser.add_argument('-c', '--num_cores', type=int, default=10,              help='Number of cores to use')
@@ -236,3 +251,8 @@ if __name__ == '__main__':
     RunMC()
 
 
+# ./monte_carlo.py -n 100 -c 16
+# Campaign Duration:  36.856 sec
+
+# ./monte_carlo.py -n 100 -c 16 -z
+# Campaign Duration:  37.742 sec
