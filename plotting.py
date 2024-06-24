@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.spatial.transform import Rotation
 
-%matplotlib widget
+%matplotlib widget # type: ignore
 plt.rcParams["figure.figsize"] = (8, 8)
 
 
