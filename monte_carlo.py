@@ -20,7 +20,7 @@ threads_running = True
 
 # List of files to keep from each run
 # Keep output files of interest, modified input files, and the stdout/stderr files
-save_list = ['time.42', 'wbn.42', 'PosN.42',
+save_list = ['time.42', 'PosN.42', 'VelN.42', 'qbn.42',
              'SC_Simple.txt', 'SettleTime.txt', 
              'stdout.txt', 'stderr.txt']
 
