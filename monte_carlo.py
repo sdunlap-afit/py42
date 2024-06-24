@@ -156,12 +156,11 @@ def runner(job_queue):
                 parent = os.path.dirname(path)
                 base = os.path.basename(path)
 
-                p = subprocess.Popen(f'tar -czf {path}.tar.gz -C {parent} {base}', shell=True,
+                p = subprocess.Popen(f'tar -czf {path}.tar.gz --remove-files -C {parent} {base}', shell=True,
                                        stdout=subprocess.DEVNULL,
                                        stderr=subprocess.STDOUT)
                 p.wait()
-                # Delete the folder
-                shutil.rmtree(path)
+
 
             print(f'Finished {path} in {time.time() - t : .03f} sec')
 
