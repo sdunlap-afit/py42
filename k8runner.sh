@@ -31,9 +31,12 @@ INDEX=$JOB_COMPLETION_INDEX
 # Run one test and compress the results
 python3 monte_carlo.py -t $TEST_DIR -n 1 -c 1 -i $INDEX -z
 
-cd mc_data
 
 # Upload all of the compressed results to the share
-smbclient //10.10.10.15/shared -U pi% -c "prompt;mput *"
+mv mc_data/* /usr/share/py42/results/
+
+
+# cd mc_data
+# smbclient //10.10.10.15/shared -U pi% -c "prompt;mput *"
 
 
